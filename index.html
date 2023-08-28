@@ -18,10 +18,10 @@
         <section>
             <div class="flex justify-center">
                 <input type="text" placeholder="search phone..." class=" input w-full max-w-md mt-4 border-gray-200  outline-none " id="inputField" />
-                <button class="btn btn-accent text-white mt-4" id="searchBtn">Search</button>
+                <button class="btn bg-[purple] text-white mt-4" id="searchBtn">Search</button>
             </div>
             <section>
-                <div class="text-center mt-32">
+                <div class="text-center mt-20">
                     <span class="loading loading-spinner loading-lg hidden" id="spinner"></span>
 
                 </div>
@@ -31,11 +31,24 @@
                 </div>
                 <div class="flex justify-center">
 
-                    <button class="btn btn-accent text-white mt-4  hidden " id="show">Show all</button>
+                    <button class="btn bg-[purple] text-white mt-4  hidden " id="show">Show all</button>
 
                 </div>
             </section>
         </section>
+
+
+        <dialog id="modal_showDetails" class="modal modal-bottom sm:modal-middle">
+            <form method="dialog" class="modal-box">
+                <h3 class="font-bold text-lg">Hello!</h3>
+                <p class="py-4">Press ESC key or click the button below to close</p>
+                <div class="modal-action">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </div>
+            </form>
+        </dialog>
+
     </main>
     <script src="index.js "></script>
 </body>

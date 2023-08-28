@@ -21,17 +21,18 @@ function dataConvert(phoneDatas) {
     const container = document.getElementById('container')
     container.textContent = ''
     const showBtn = document.getElementById('show')
-    if (phoneDatas.length > 10) {
+    if (phoneDatas.length > 12) {
         showBtn.classList.remove('hidden')
     } else {
         showBtn.classList.add('hidden')
     }
 
-    let phoneDataSort = phoneDatas.slice(0, 10)
+    let phoneDataSort = phoneDatas.slice(0, 12)
 
 
     phoneDataSort.map(phoneData => {
-        console.log(phoneData)
+
+
         const card = document.createElement('div')
         card.className = `card w-96 card-compact  bg-base-100 shadow-xl py-4`
 
@@ -40,14 +41,14 @@ function dataConvert(phoneDatas) {
         <h2 class="text-3xl">${phoneData.brand}</h2>
         <p>${phoneData. phone_name}</p>
             <div class="card-actions justify-center">
-                <button class="btn btn-">Buy now</button>
+                <button class="btn bg-[purple] text-white" onclick='showAll("${phoneData.slug}")'>Buy now</button>
             </div>
         </div>`
         container.appendChild(card)
 
     });
 
-
+    toggleSpinner(false)
 }
 
 
@@ -69,14 +70,31 @@ searchBtn.addEventListener('click', function() {
 
 })
 
+
+
+//spinner function
 function toggleSpinner(isLoading) {
 
     const spinner = document.getElementById('spinner')
     if (isLoading) {
-        spinner.cl
+        spinner.classList.remove('hidden')
 
     } else {
-
+        spinner.classList.add('hidden')
     }
 
+}
+
+
+async function showAll(id) {
+    const response = await fetch(` https://openapi.programming-hero.com/api/phone/${id} `)
+    const data = await response.json()
+    const mainData = data.data
+    showDetails(mainData)
+}
+
+
+function showDetails(data) {
+
+    modal_showDetails.showModal()
 }
